@@ -1,0 +1,222 @@
+{
+  "parents": [
+    {
+      "id": "parent_demo_01",
+      "name": "Aditi Sharma",
+      "email": "aditi.parent@guruji.ai",
+      "createdAt": "2026-10-25T02:38:59.803Z"
+    }
+  ],
+  "children": [
+    {
+      "id": "child_aarav_01",
+      "parentId": "parent_demo_01",
+      "name": "Aarav Sharma",
+      "age": 7,
+      "grade": "Grade 2",
+      "language": "en",
+      "curriculum": "cbse",
+      "subjects": [
+        "Mathematics"
+      ],
+      "avatar": "🦊",
+      "accessibility": {
+        "ttsEnabled": true,
+        "ttsSpeed": 1,
+        "dyslexiaFont": false,
+        "largeTouchTargets": false,
+        "soundEffects": true
+      },
+      "diagnosticCompleted": true,
+      "createdAt": "2026-10-25T02:38:59.804Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "sess_initial_diag",
+      "childId": "child_aarav_01",
+      "mode": "diagnostic",
+      "startedAt": "2026-10-26T02:38:59.804Z",
+      "endedAt": "2026-10-26T02:53:59.804Z",
+      "questionsAttempted": 3,
+      "correctCount": 2,
+      "skillIds": [
+        "skill_count_objects",
+        "skill_tens_and_ones",
+        "skill_shapes_2d"
+      ]
+    },
+    {
+      "id": "sess_lesson_practice",
+      "childId": "child_aarav_01",
+      "mode": "lesson",
+      "startedAt": "2026-10-30T02:38:59.804Z",
+      "endedAt": "2026-10-30T02:58:59.804Z",
+      "questionsAttempted": 4,
+      "correctCount": 3,
+      "skillIds": [
+        "skill_tens_and_ones"
+      ]
+    }
+  ],
+  "responses": [
+    {
+      "id": "resp_demo_1",
+      "childId": "child_aarav_01",
+      "sessionId": "sess_initial_diag",
+      "questionId": "q_co_01",
+      "skillId": "skill_count_objects",
+      "submittedAnswer": "7",
+      "isCorrect": true,
+      "isIndependent": true,
+      "hintTierUsed": 0,
+      "timeSpentMs": 14200,
+      "timestamp": "2026-10-26T02:38:59.804Z"
+    },
+    {
+      "id": "resp_demo_2",
+      "childId": "child_aarav_01",
+      "sessionId": "sess_lesson_practice",
+      "questionId": "q_to_01",
+      "skillId": "skill_tens_and_ones",
+      "submittedAnswer": "34",
+      "isCorrect": false,
+      "isIndependent": true,
+      "hintTierUsed": 0,
+      "timeSpentMs": 18500,
+      "detectedMisconceptionKey": "tens_ones_reversed",
+      "timestamp": "2026-10-30T02:38:59.804Z"
+    },
+    {
+      "id": "resp_demo_3",
+      "childId": "child_aarav_01",
+      "sessionId": "sess_lesson_practice",
+      "questionId": "q_to_01",
+      "skillId": "skill_tens_and_ones",
+      "submittedAnswer": "43",
+      "isCorrect": true,
+      "isIndependent": false,
+      "hintTierUsed": 2,
+      "timeSpentMs": 12000,
+      "timestamp": "2026-10-30T02:39:59.804Z"
+    },
+    {
+      "id": "resp_demo_4",
+      "childId": "child_aarav_01",
+      "sessionId": "sess_lesson_practice",
+      "questionId": "q_to_02",
+      "skillId": "skill_tens_and_ones",
+      "submittedAnswer": "5",
+      "isCorrect": true,
+      "isIndependent": true,
+      "hintTierUsed": 0,
+      "timeSpentMs": 9800,
+      "timestamp": "2026-10-30T02:41:59.804Z"
+    }
+  ],
+  "skillProgress": [
+    {
+      "id": "prog_count",
+      "childId": "child_aarav_01",
+      "skillId": "skill_count_objects",
+      "state": "retained",
+      "totalAttempts": 3,
+      "independentCorrect": 3,
+      "assistedCorrect": 0,
+      "consecutiveCorrect": 3,
+      "lastPracticed": "2026-10-27T02:38:59.804Z",
+      "provisionalMasteryDate": "2026-10-27T02:38:59.804Z",
+      "retainedDate": "2026-10-31T02:38:59.804Z"
+    },
+    {
+      "id": "prog_tens",
+      "childId": "child_aarav_01",
+      "skillId": "skill_tens_and_ones",
+      "state": "practising",
+      "totalAttempts": 4,
+      "independentCorrect": 2,
+      "assistedCorrect": 1,
+      "consecutiveCorrect": 2,
+      "lastPracticed": "2026-10-30T02:38:59.804Z"
+    },
+    {
+      "id": "prog_tenframe",
+      "childId": "child_aarav_01",
+      "skillId": "skill_add_tenframe",
+      "state": "learning",
+      "totalAttempts": 0,
+      "independentCorrect": 0,
+      "assistedCorrect": 0,
+      "consecutiveCorrect": 0,
+      "lastPracticed": "2026-10-25T02:38:59.804Z"
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "misc_aarav_1",
+      "childId": "child_aarav_01",
+      "skillId": "skill_tens_and_ones",
+      "misconceptionKey": "tens_ones_reversed",
+      "description": "Reversing the order of tens and ones (writing 34 instead of 43).",
+      "frequency": 1,
+      "firstSeen": "2026-10-30T02:38:59.804Z",
+      "lastSeen": "2026-10-30T02:38:59.804Z",
+      "remedySuggested": "Practice with physical bunches of 10 crayons or spoons to reinforce that tens are physically larger groups."
+    }
+  ],
+  "revisions": [
+    {
+      "id": "rev_aarav_count",
+      "childId": "child_aarav_01",
+      "skillId": "skill_tens_and_ones",
+      "dueDate": "2026-11-02",
+      "intervalDays": 3,
+      "status": "pending",
+      "repetitionCount": 1,
+      "lastReviewed": "2026-10-30T02:38:59.804Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_sample_cbse",
+      "parentId": "parent_demo_01",
+      "title": "CBSE Grade 2 Maths - Chapter 2 Tens and Ones Notes",
+      "fileName": "cbse_math_ch2_tens_ones.pdf",
+      "fileSize": 428000,
+      "uploadedAt": "2026-10-29T02:38:59.804Z",
+      "pageCount": 4,
+      "extractedTextSnippet": "Chapter 2: Counting in Groups. Let us count how many cups are there. Look at how different things are kept in groups. 3 tens and 4 ones equal 34. Practice grouping bangles and matchsticks into tens.",
+      "mappedTopics": [
+        {
+          "topicName": "Counting in Groups of Ten",
+          "matchedSkillId": "skill_tens_and_ones",
+          "relevanceScore": 0.94,
+          "pageNumbers": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "topicName": "Addition with Bundles",
+          "matchedSkillId": "skill_add_tenframe",
+          "relevanceScore": 0.82,
+          "pageNumbers": [
+            4
+          ]
+        }
+      ],
+      "notes": "Standard CBSE syllabus textbook chapter."
+    }
+  ],
+  "dailyMissions": [
+    {
+      "childId": "child_aarav_01",
+      "date": "2026-11-01",
+      "lessonSkillId": "skill_tens_and_ones",
+      "practiceSkillId": "skill_tens_and_ones",
+      "revisionSkillId": "skill_count_objects",
+      "completed": false
+    }
+  ]
+}

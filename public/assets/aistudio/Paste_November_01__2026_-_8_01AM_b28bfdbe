@@ -1,0 +1,1179 @@
+# MASTER BUILD PROMPT — GURUJI AI
+
+## 1. Your role and mission
+
+Act as a senior full-stack engineer, AI systems architect, educational technology specialist, UX/UI designer, database engineer, QA engineer, and product security engineer.
+
+Build **Guruji AI**, an AI-powered personalized learning platform for children aged 4–12, with a reliable AI tutor at its core.
+
+Guruji should help children learn reading, writing, mathematics, and eventually other school subjects through personalized teaching, visual explanations, interactive activities, adaptive practice, and revision.
+
+The platform must serve three primary purposes:
+
+1. **Child experience:** An engaging, colourful, safe learning environment that children can navigate independently according to their age and abilities.
+2. **AI tutor:** An intelligent learning system that assesses skills, explains concepts, identifies misconceptions, selects appropriate questions, adapts explanations, tracks mastery, and plans revision.
+3. **Parent experience:** A trustworthy dashboard showing the child's actual learning progress, strengths, skills needing practice, completed activities, and recommended next steps.
+
+The central product principle is:
+
+**Guruji must optimize for genuine learning, not merely correct answers, screen time, or engagement.**
+
+Never describe a child as weak, unintelligent, or incapable. Describe specific skills that need further practice and provide a supportive path to improvement.
+
+Do not build a generic chatbot with educational branding. Build a complete learning application in which AI supports a structured, measurable teaching process.
+
+---
+
+## 2. Development instructions
+
+Before coding:
+
+- Inspect the existing repository, framework, dependencies, and current implementation.
+- Preserve working functionality and existing useful code.
+- Identify missing components and create an implementation plan.
+- If starting from an empty repository, establish the architecture described below.
+- Build the actual application, not just mockups, screenshots, static HTML, or a presentation.
+- Do not stop after generating a landing page.
+- Do not leave buttons, forms, dashboards, or navigation elements non-functional.
+- Do not invent successful API calls, progress records, AI results, or database persistence.
+- Do not expose secrets or private keys in client-side code.
+- Use sensible defaults for nonessential decisions rather than repeatedly asking the user questions.
+- Run available tests, resolve build errors, and document anything that remains incomplete.
+
+Work incrementally. Establish a working application first, then implement and test each major subsystem.
+
+If credentials for an external AI, speech, email, or video service are missing, implement the appropriate integration interface, configuration instructions, and a clearly labelled development fallback. Never pretend the real service is connected.
+
+---
+
+## 3. Recommended technology stack
+
+Use the following architecture unless the existing repository already has a sound, compatible implementation.
+
+### Frontend
+
+- Next.js with React and TypeScript.
+- Tailwind CSS for styling.
+- A consistent, reusable component system.
+- Accessible charts for parent progress reports.
+- A responsive layout for mobile phones, tablets, and desktop computers.
+- Form validation and clear loading, error, success, and empty states.
+
+### Backend
+
+- Python with FastAPI.
+- Pydantic for request and response validation.
+- SQLAlchemy for database operations.
+- Alembic for database migrations.
+- Pytest for backend tests.
+- A provider-independent AI service layer.
+
+### Database and storage
+
+- PostgreSQL for persistent application data.
+- Supabase may be used for managed PostgreSQL, authentication, and private file storage.
+- Use secure object storage for uploaded educational documents.
+- Use server-side access controls and database row-level security where supported.
+
+### AI and supporting services
+
+- A configurable language-model API for explanations, hints, and selected content generation.
+- A text-to-speech provider for spoken lessons.
+- Speech recognition as an optional, carefully tested feature.
+- A curated educational video catalogue.
+- A document-processing pipeline for PDFs and permitted learning resources.
+
+Use environment variables for secrets and provider configuration.
+
+Provide `.env.example` containing placeholder values only.
+
+The architecture should separate the frontend, backend, database, AI provider, educational content, and learning engine so that individual components can be upgraded independently.
+
+---
+
+## 4. Product scope and implementation priorities
+
+Build Guruji as one platform with age-appropriate experiences.
+
+### Priority A: Functional core MVP
+
+Implement:
+
+- Parent registration and authentication.
+- Child profiles and age-appropriate settings.
+- Grade, language, and curriculum selection.
+- Diagnostic assessments.
+- Skill-by-skill learning profiles.
+- Interactive lessons and questions.
+- Deterministic automatic grading.
+- AI explanations and contextual hints.
+- Adaptive lesson and question selection.
+- Persistent session history.
+- Student dashboard.
+- Parent dashboard.
+- Basic text-to-speech.
+- Educational content and safety validation.
+- Secure access control and account deletion.
+- A useful initial curriculum and sample questions.
+
+Begin with mathematics for ages 6–8 so that the full learning loop can be tested properly. Design the system so reading, writing, other age groups, and languages can be added without rewriting the application.
+
+### Priority B: Enhanced learning features
+
+Implement modular support for:
+
+- Parent-uploaded PDFs, notes, textbooks, and worksheets.
+- Text extraction with page references.
+- Topic extraction and syllabus mapping.
+- Source-grounded lessons and questions.
+- Curated educational video recommendations.
+- English and Marathi language support.
+- Personalized revision plans.
+- Parent summaries and home-learning suggestions.
+- Repeated misconception detection.
+- Speech-based answers where suitable.
+
+### Priority C: Future expansion
+
+Prepare the architecture for:
+
+- Natural voice conversations.
+- Reading fluency and pronunciation assessment.
+- Writing feedback.
+- Teacher accounts and school dashboards.
+- More subjects and curricula.
+- More sophisticated mastery and forgetting models.
+- Validated learning analytics.
+
+Do not claim future features are implemented until they work. Clearly distinguish completed features from planned features.
+
+---
+
+## 5. Design system and user interface
+
+Create a polished, friendly, modern educational product. It should feel trustworthy to parents and exciting to children without looking excessively childish.
+
+### Visual identity
+
+Use:
+
+- Warm cream backgrounds.
+- Teal for learning progress and positive feedback.
+- Coral for primary actions.
+- Sunny yellow for rewards and highlights.
+- Purple for creative activities.
+- Rounded cards, simple illustrations, subtle shadows, and gentle animations.
+- Large, readable text and generous spacing.
+- Strong colour contrast and accessible controls.
+
+Avoid clutter, excessive gradients, tiny controls, intrusive pop-ups, aggressive notifications, and competitive leaderboards.
+
+Create a consistent design system with reusable components for:
+
+- Navigation.
+- Buttons and form fields.
+- Cards.
+- Progress indicators.
+- Lesson layouts.
+- Question choices.
+- Feedback messages.
+- Dialogues and confirmations.
+- Loading states.
+- Empty states.
+- Error messages.
+- Charts and reports.
+- Rewards and milestones.
+
+Use real illustrations or suitable visual assets where they improve understanding. Avoid depending on external image URLs that may break.
+
+### Age-appropriate experiences
+
+**Ages 4–6**
+
+- Audio-first instructions.
+- Large touch targets.
+- Pictures and simple interactions.
+- Very short activities.
+- Adult-assisted setup.
+
+**Ages 7–9**
+
+- Illustrated lessons.
+- Guided practice.
+- Stories and interactive examples.
+- A visible learning journey.
+
+**Ages 10–12**
+
+- More independent navigation.
+- Structured explanations.
+- Subject dashboards.
+- Revision schedules and learning goals.
+
+Age is only a starting point. Adapt to the child's demonstrated ability, language preference, reading level, and accessibility needs.
+
+---
+
+## 6. Application routes and screens
+
+Implement complete, navigable screens for the following experiences.
+
+### Public and account screens
+
+- Landing page explaining Guruji.
+- Product features and how it works.
+- Sign-up and login.
+- Password recovery.
+- Privacy and safety information.
+- Terms and consent information.
+- Account and child-data deletion flow.
+
+### Parent onboarding
+
+Collect only necessary information.
+
+Allow a parent or authorized guardian to:
+
+1. Create an account.
+2. Add a child profile.
+3. Set the child's age and grade.
+4. Choose a language and curriculum.
+5. Select initial subjects.
+6. Configure accessibility preferences.
+7. Start a diagnostic assessment.
+8. Review the initial learning profile.
+
+Do not request unnecessary personal details from children.
+
+### Child home dashboard
+
+Display:
+
+- A welcoming message.
+- The child's learning journey.
+- Recommended daily mission.
+- Continue-learning action.
+- Mathematics and reading cards, according to enabled subjects.
+- Recently completed activities.
+- Personal milestones.
+- A gentle revision reminder.
+- An accessible way to request help.
+
+Do not display private parent information or other children's data.
+
+### Lesson screen
+
+Include:
+
+- Concept title and learning objective.
+- Simple explanation.
+- Visual or illustrated example.
+- Optional audio narration.
+- Worked example.
+- Interactive practice question.
+- Answer choices or appropriate input.
+- Hint button.
+- Submit-answer button.
+- Encouraging feedback.
+- A retry or alternative explanation when needed.
+- Progress within the activity.
+- Exit and resume functionality.
+
+For incorrect answers, explain the likely misconception gently, provide a visual example, and let the child try again.
+
+### Diagnostic assessment
+
+Create an age-appropriate, low-pressure assessment.
+
+It should:
+
+- Sample prerequisite and target skills.
+- Adjust difficulty gradually.
+- Record answers, response patterns, and hint usage.
+- Avoid presenting a single assessment as a permanent judgement of ability.
+- Produce a provisional skill profile.
+- Explain which skills should be checked or practised next.
+
+### Parent dashboard
+
+Show real data from the backend:
+
+- Recent learning sessions.
+- Time spent on learning activities.
+- Skills explored.
+- Skills currently being practised.
+- Provisional mastery and retained skills.
+- Repeated misconceptions.
+- Progress over time.
+- Revision due.
+- Suggested next lesson.
+- Practical home-learning activities.
+- Relevant assessment history.
+
+Clearly distinguish measured data from estimates and recommendations.
+
+Do not invent percentages, test results, or learning gains. If insufficient data exists, show an informative empty state.
+
+### Parent resource centre
+
+Provide:
+
+- Document upload.
+- Upload processing status.
+- Extracted topics.
+- Syllabus mapping.
+- Source references.
+- Parent review and correction of mapped topics.
+- Remove-document controls.
+- Curated video recommendations.
+- Suggested home activities.
+
+### Settings
+
+Provide controls for:
+
+- Parent account.
+- Child profiles.
+- Language.
+- Curriculum.
+- Accessibility.
+- Audio preferences.
+- Consent.
+- Data export where appropriate.
+- Data retention and deletion.
+- Sign-out.
+
+---
+
+## 7. The AI tutor: core educational intelligence
+
+The tutor must follow a structured process rather than generating arbitrary questions.
+
+Implement this learning loop:
+
+**Assess → Diagnose → Teach → Practise → Reassess → Schedule revision**
+
+For every learning activity, the system should know:
+
+- The learning objective.
+- The skill being practised.
+- Required prerequisite skills.
+- The child's previous performance.
+- The explanation already attempted.
+- Previous mistakes and hints.
+- The current learning stage.
+- The evidence needed to decide the next step.
+
+### Step 1: Assess
+
+Determine the child's current understanding using a small number of age-appropriate questions.
+
+Start with approximately 2–3 diagnostic questions per target concept as an initial product-design assumption. Increase or decrease the number when the evidence is insufficient or the child needs a different approach.
+
+Do not assume that a correct answer alone proves understanding.
+
+### Step 2: Diagnose
+
+Classify the observed skill state as one of:
+
+- Learning: needs explanation or guidance.
+- Practising: some understanding, but inconsistent performance.
+- Provisional mastery: succeeds independently on suitable varied questions.
+- Retained: demonstrates the skill again after a delay.
+
+These are application states, not labels for the child.
+
+Record the evidence and timestamp supporting each state.
+
+### Step 3: Teach
+
+Teach the concept in small steps.
+
+Use this sequence where appropriate:
+
+1. Explain the idea in simple language.
+2. Show a concrete visual example.
+3. Demonstrate a worked example.
+4. Ask a short comprehension question.
+5. Provide guided practice.
+6. Check whether the child can apply the concept independently.
+
+Adapt the explanation to the child's age, language, reading ability, interests, and known misconceptions.
+
+For example, teach addition with physical objects or pictures before moving to abstract equations when that helps the learner.
+
+### Step 4: Practise
+
+Choose questions that target the current learning objective.
+
+Vary the examples while keeping the intended skill stable. Avoid repeating the same question with only superficial changes.
+
+Record:
+
+- Question and skill identifiers.
+- Answer submitted.
+- Correctness.
+- Whether the answer was independent or hint-assisted.
+- Number and type of hints.
+- Difficulty.
+- Attempt timestamp.
+- Relevant misconception tags.
+
+### Step 5: Reassess
+
+Decide whether to:
+
+- Continue guided practice.
+- Present a different explanation.
+- Revisit a prerequisite.
+- Try an independent question.
+- Move to a provisional mastery check.
+- Schedule later revision.
+
+As a starting rule, a result below 2 correct answers out of 3 may trigger reteaching, 2 out of 3 may trigger additional practice, and 3 out of 3 may trigger a varied mastery check.
+
+These are configurable initial heuristics, not scientifically established thresholds. Test and refine them with educators and pilot data.
+
+Do not treat a hinted answer as equivalent to an independently demonstrated skill.
+
+### Step 6: Schedule revision
+
+Use spaced revision to check retention.
+
+Begin with configurable review intervals, such as one day, three days, and seven days after learning, then adjust based on observed performance and the child's circumstances.
+
+These intervals are starting defaults, not universal learning laws.
+
+If the child struggles during revision, revisit the explanation and schedule another review. If the child succeeds independently, increase the interval appropriately.
+
+### Question-count policy
+
+Guruji must decide how many questions are useful for the current objective.
+
+Use adaptive question selection, not a fixed worksheet quota.
+
+A reasonable initial lesson might contain:
+
+- 2–3 diagnostic questions.
+- 3–5 guided-practice questions.
+- 3–5 independent-check questions, only if needed.
+
+Do not automatically ask every child every question. Stop when sufficient evidence exists, the child needs a break, or frustration is increasing.
+
+Make the decision configurable and evaluate it during supervised pilots.
+
+---
+
+## 8. Deterministic grading and misconception detection
+
+Never rely on a language model to determine basic mathematical correctness when a deterministic calculation is possible.
+
+Implement a grading service for supported question types:
+
+- Single-choice questions.
+- Multiple-choice questions where appropriate.
+- Numeric answers.
+- Short structured answers.
+- Matching and ordering activities.
+- Other question types as they are added.
+
+For mathematics, validate the answer against a trusted answer key or a tested calculation function.
+
+For reading and writing, use suitable rubrics and review safeguards. Do not automatically treat an open-ended language answer as incorrect simply because it differs from one expected sentence.
+
+Create a misconception taxonomy. Examples include:
+
+- Confusing tens and ones.
+- Counting from the wrong starting number.
+- Misunderstanding regrouping.
+- Confusing addition and subtraction.
+- Misreading question instructions.
+
+Detect patterns across multiple answers. Store the evidence for each suspected misconception and update it when new evidence appears.
+
+Do not infer a persistent learning difficulty from one mistake.
+
+---
+
+## 9. AI service and structured outputs
+
+Create a dedicated backend AI service instead of calling the model directly from frontend components.
+
+Support configurable model providers through an adapter interface.
+
+The AI service should handle:
+
+- Age-appropriate explanations.
+- Contextual hints.
+- Alternative explanations.
+- Story-based examples.
+- Personalised practice-question generation.
+- Explanations of why a skill needs practice.
+- Source-grounded responses to uploaded resources.
+
+Use validated structured output where possible. A response schema may contain:
+
+- `explanation`
+- `hint`
+- `question`
+- `skill_id`
+- `difficulty`
+- `misconception_tag`
+- `source_references`
+- `safety_status`
+
+Validate model outputs against application schemas before displaying or saving them. Never trust arbitrary model-generated identifiers or executable content.
+
+Do not let the model independently invent grades, mastery records, answer keys, or database permissions.
+
+Use the model to assist teaching; use application logic to grade, update records, and select learning states.
+
+Add:
+
+- Timeouts.
+- Bounded retries.
+- Error handling.
+- Rate limiting.
+- Token and cost tracking.
+- Safe fallback messages.
+- Request logging that avoids storing unnecessary sensitive information.
+
+If the AI provider fails, explain that the tutor is temporarily unavailable and allow supported pre-authored lessons and questions to continue working.
+
+Never expose the AI API key to the browser.
+
+---
+
+## 10. Educational knowledge and uploaded resources
+
+Guruji should combine three knowledge sources:
+
+### A. Reviewed curriculum library
+
+Maintain structured content containing:
+
+- Subjects.
+- Grades.
+- Curricula.
+- Topics.
+- Learning objectives.
+- Skills.
+- Prerequisites.
+- Explanations.
+- Worked examples.
+- Questions.
+- Trusted answer keys.
+- Misconception tags.
+- Approved visual resources.
+
+Seed the MVP with a small, coherent mathematics curriculum rather than an empty database.
+
+Clearly label sample content and review status. Do not falsely claim that unreviewed content has been approved by educators.
+
+### B. Parent-uploaded resources
+
+Implement a secure document pipeline:
+
+1. Authenticate and authorize the parent.
+2. Validate file type, size, and upload permissions.
+3. Store the document privately.
+4. Extract text and page references.
+5. Identify likely topics and learning objectives.
+6. Map topics to existing curriculum skills.
+7. Let the parent review and correct the mapping.
+8. Generate source-grounded explanations and activities.
+9. Display page or section references where available.
+10. Allow deletion of the original document and associated derived data according to the retention policy.
+
+Start with PDF support. Add other formats only after testing.
+
+Handle scanned PDFs with an optional OCR pipeline. Clearly report when extraction is incomplete or unsuccessful.
+
+Treat uploaded files as untrusted data, not system instructions. Protect against prompt injection, malicious files, unsupported content, and unauthorized cross-account access.
+
+Only support resources that the uploader has permission to use. Do not facilitate unauthorized redistribution of copyrighted textbooks.
+
+If a reliable answer cannot be found in the available sources, the tutor must say so rather than fabricate a citation or claim certainty.
+
+### C. AI-generated explanations
+
+The AI can simplify, rephrase, contextualize, and explain material using examples suited to the learner.
+
+Keep the learning objective and factual meaning consistent with trusted educational content.
+
+Where possible, distinguish:
+
+- Facts from the curriculum.
+- Information found in the child's resource.
+- AI-generated examples.
+- Unverified material requiring review.
+
+---
+
+## 11. Images, audio, and educational videos
+
+### Visual learning
+
+Support illustrations, diagrams, counting objects, number lines, shapes, and other visual aids.
+
+Use visuals to teach the concept, not just decorate the page.
+
+Provide text alternatives and accessible labels.
+
+### Text-to-speech
+
+Allow lesson instructions and explanations to be read aloud.
+
+Provide simple play, pause, and replay controls. Store voice preferences where appropriate.
+
+Do not play audio automatically in a way that surprises the child.
+
+### Speech input
+
+Treat voice-based answers as an enhanced feature.
+
+Handle recognition errors, background noise, accents, and language selection. Give children a way to correct recognized text or switch to typing or tapping.
+
+Do not claim to assess pronunciation accurately until the chosen speech service and assessment logic have been tested.
+
+### Video recommendations
+
+Recommend selected educational videos that are relevant to the current concept and age group.
+
+Use a curated catalogue or vetted search results. Store metadata such as title, provider, language, subject, age suitability, and review status.
+
+Do not provide unrestricted video browsing to young children. Avoid autoplay and distracting recommendations.
+
+Videos should supplement the tutor, not replace the lesson or become an uncontrolled path away from learning.
+
+---
+
+## 12. Student progress and parent reporting
+
+Persist progress in the database so it remains available across sessions and devices.
+
+Track:
+
+- Skills attempted.
+- Questions answered.
+- Independent and hint-assisted performance.
+- Repeated errors.
+- Lessons completed.
+- Current skill states.
+- Revision due dates.
+- Session duration.
+- Last activity.
+- Progress over time.
+- Recommended next activity.
+
+Calculate metrics using actual saved records and documented rules.
+
+Do not confuse activity completion with mastery. Do not claim that a child has improved because they spent more time in the app.
+
+Show parents understandable explanations such as:
+
+- What the child practised.
+- What the child can currently demonstrate.
+- Where the child needed help.
+- What Guruji plans to teach next.
+- How the parent can support the child at home.
+
+Provide useful sample parent activities, such as a brief counting exercise using household objects.
+
+Use an informative empty state when a child has insufficient learning history for a reliable assessment.
+
+---
+
+## 13. Learning habit and motivation system
+
+Build a healthy routine that encourages children to return because learning feels rewarding and useful.
+
+Implement:
+
+- Personalized daily missions.
+- A learning adventure map.
+- Small achievable milestones.
+- Progress indicators.
+- Effort-based rewards.
+- Optional interest themes, such as space, animals, nature, and stories.
+- Revision activities.
+- A friendly resume-learning experience.
+
+A daily mission might combine one short new lesson, a few practice questions, and a brief revision activity.
+
+Allow the learning planner to reduce or change the activity when the child is tired, struggling, or has limited time.
+
+Do not use:
+
+- Punishments for missing a day.
+- Shame-based messages.
+- Public rankings.
+- Manipulative countdowns.
+- Artificially scarce rewards.
+- Pressure to spend more time in the app.
+- Excessive notifications.
+- Engagement metrics as a substitute for educational progress.
+
+Streaks, if offered, must be optional and forgiving. A missed day must never erase educational progress or make the child feel like a failure.
+
+---
+
+## 14. Parent and child authorization
+
+Use secure authentication and server-side authorization.
+
+Implement roles for:
+
+- Parent or guardian.
+- Child profile within the parent's account.
+- Authorized teacher in a future extension.
+
+A child profile is not an independent account with unrestricted permissions.
+
+Ensure that:
+
+- A parent can access only authorized child profiles.
+- One family cannot read another family's records.
+- Children cannot access account administration or parent-only settings.
+- Documents remain private.
+- API endpoints verify permissions for every protected operation.
+- Uploaded files cannot be retrieved by guessing a URL.
+- Administrative operations are restricted.
+- Sessions and authentication tokens are handled securely.
+
+Do not trust a `child_id` supplied by the browser without checking ownership.
+
+Provide account deletion and a clear policy for deleting associated child records, uploaded files, and derived data.
+
+---
+
+## 15. Child privacy and educational safety
+
+Design for a product used by minors.
+
+Implement age-appropriate privacy controls, parental consent where required, data minimization, secure storage, access controls, and documented retention rules.
+
+Before a real-world launch, verify applicable Indian requirements and any other jurisdiction's child-data, privacy, consumer-protection, and education-related obligations with qualified guidance.
+
+The tutor must:
+
+- Use supportive, non-judgmental language.
+- Avoid adult or inappropriate content.
+- Avoid soliciting unnecessary personal information.
+- Decline unsafe or unsuitable requests in an age-appropriate manner.
+- Stay focused on educational assistance.
+- Escalate concerning situations through an appropriately designed, reviewed safety process where necessary.
+- Avoid claiming to be a human teacher, parent, or therapist.
+
+Do not make unsupported diagnoses or claim to identify disabilities or psychological conditions.
+
+Do not use a child's educational data for unrelated advertising or profiling.
+
+Use privacy-preserving analytics and avoid storing full AI conversations indefinitely by default.
+
+---
+
+## 16. Database schema
+
+Design normalized tables with appropriate relationships, indexes, timestamps, constraints, and migrations.
+
+At minimum, consider:
+
+- `parents`
+- `children`
+- `curricula`
+- `grades`
+- `subjects`
+- `topics`
+- `skills`
+- `skill_prerequisites`
+- `lessons`
+- `lesson_content`
+- `questions`
+- `answer_keys`
+- `sessions`
+- `responses`
+- `skill_progress`
+- `misconception_records`
+- `revision_schedule`
+- `uploaded_resources`
+- `resource_topics`
+- `video_resources`
+- `achievements`
+- `parent_reports`
+- `consent_records`
+- `ai_usage_events`
+
+Add other tables only when they represent a real requirement.
+
+Important data requirements:
+
+- Every child-specific record must be linked to the correct child.
+- Every child must belong to an authorized parent or guardian.
+- Question answers and grading rules must be stored securely.
+- Revision schedules must persist between sessions.
+- AI-generated content must be distinguishable from reviewed content.
+- Source references must be traceable to the relevant document and page when available.
+- Database migrations must be reproducible.
+- Seed data must be clearly marked as demonstration content.
+
+Do not store every derived value unnecessarily. Define which values are authoritative records and which are calculated from existing data.
+
+---
+
+## 17. Backend API design
+
+Create documented, validated REST endpoints. Adjust names to the existing project conventions while maintaining equivalent functionality.
+
+### Authentication and profiles
+
+- `POST /auth/register`
+- `POST /auth/login`
+- `POST /children`
+- `GET /children`
+- `GET /children/{child_id}`
+- `PATCH /children/{child_id}`
+- `DELETE /children/{child_id}`
+
+### Learning
+
+- `GET /learning/next`
+- `POST /assessments`
+- `POST /sessions`
+- `GET /sessions/{session_id}`
+- `POST /responses`
+- `GET /progress/{child_id}`
+- `GET /revision/due`
+- `POST /learning/next-activity`
+
+### Tutor
+
+- `POST /tutor/explain`
+- `POST /tutor/hint`
+- `POST /tutor/generate-practice`
+- `POST /tutor/feedback`
+
+### Resources
+
+- `POST /resources/upload`
+- `GET /resources`
+- `GET /resources/{resource_id}`
+- `DELETE /resources/{resource_id}`
+- `POST /resources/{resource_id}/process`
+- `PATCH /resources/{resource_id}/topic-mapping`
+
+### Parent reports
+
+- `GET /parents/dashboard`
+- `GET /parents/children/{child_id}/report`
+- `GET /parents/children/{child_id}/recommendations`
+
+Use consistent response schemas, validation, useful HTTP status codes, pagination where necessary, and clear error messages.
+
+Document the API with FastAPI's OpenAPI/Swagger support.
+
+Every endpoint must enforce authorization and input validation. Do not expose answer keys, private resource contents, or internal system prompts unnecessarily.
+
+---
+
+## 18. Learning planner implementation
+
+Create a dedicated learning-planner service.
+
+Its inputs should include:
+
+- Current skill state.
+- Recent independent performance.
+- Hint usage.
+- Misconception evidence.
+- Prerequisite skill states.
+- Revision due status.
+- Previous explanations attempted.
+- Session context and fatigue indicators when available.
+
+Its output should specify:
+
+- Next activity type.
+- Target skill.
+- Learning objective.
+- Reason for the decision.
+- Recommended difficulty.
+- Whether an explanation is required.
+- Whether a hint is appropriate.
+- Whether a mastery check is appropriate.
+- Whether revision should be scheduled.
+
+Implement transparent, testable rules first. Avoid training a custom machine-learning model for the MVP.
+
+Use AI where it adds value, but keep lesson progression, grading, permissions, and progress persistence under explicit application control.
+
+Store enough decision metadata to explain why Guruji selected the next activity.
+
+---
+
+## 19. Error handling, reliability, and performance
+
+Implement:
+
+- Frontend and backend validation.
+- Friendly error states.
+- Loading indicators.
+- Retry options where safe.
+- API timeouts.
+- Database transaction handling.
+- Logging without unnecessary sensitive data.
+- Rate limits for expensive endpoints.
+- Upload size and type restrictions.
+- Protection against duplicate submissions.
+- Safe session recovery.
+- Database indexes for common queries.
+- Pagination for growing histories.
+- Graceful handling of unavailable external providers.
+
+Do not allow a failed AI request to erase an answer the child has already submitted.
+
+Do not mark a session complete until the relevant operation has actually succeeded.
+
+---
+
+## 20. Testing requirements
+
+Write real automated tests.
+
+### Backend tests
+
+Test:
+
+- Authentication and authorization.
+- Cross-family data isolation.
+- Child profile operations.
+- Assessment creation.
+- Deterministic grading.
+- Incorrect and partially correct answers.
+- Hint-assisted versus independent performance.
+- Skill-state transitions.
+- Adaptive next-activity selection.
+- Revision scheduling.
+- Resource upload validation.
+- Source-reference handling.
+- AI provider failures.
+- Data deletion.
+
+### Frontend tests
+
+Test:
+
+- Navigation.
+- Parent onboarding.
+- Child profile creation.
+- Lesson interactions.
+- Answer submission.
+- Correct and incorrect feedback.
+- Dashboard rendering.
+- Loading and empty states.
+- Mobile layouts.
+- Accessible labels and keyboard navigation.
+
+### Integration and end-to-end tests
+
+Test a complete scenario:
+
+1. A parent creates an account.
+2. The parent creates a child profile.
+3. The child completes an initial assessment.
+4. Guruji builds a provisional skill profile.
+5. The child completes a lesson.
+6. Answers are graded and saved.
+7. The learning planner selects the next activity.
+8. Progress appears on the parent dashboard.
+9. The child returns in a later session.
+10. A due revision activity is offered.
+
+Use controlled AI responses in automated tests so the test suite does not depend on live model calls.
+
+Test with realistic edge cases and empty data, not only ideal scenarios.
+
+---
+
+## 21. Project structure and developer experience
+
+Organize the repository clearly. A possible structure is:
+
+`frontend/`
+- Application routes.
+- Shared UI components.
+- Child experience.
+- Parent experience.
+- API client.
+- Frontend tests.
+
+`backend/`
+- FastAPI application.
+- API routes.
+- Authentication and authorization.
+- Database models.
+- Schemas.
+- Services.
+- Learning engine.
+- AI provider adapters.
+- Resource processing.
+- Migrations.
+- Seed data.
+- Tests.
+
+`docs/`
+- Architecture.
+- Database design.
+- API documentation.
+- Local setup.
+- Deployment.
+- Privacy and security assumptions.
+
+The precise structure may be adjusted to fit the existing repository.
+
+Provide:
+
+- `README.md`
+- `.env.example`
+- Dependency lockfiles where appropriate.
+- Database migrations.
+- Seed scripts.
+- Test instructions.
+- Local development instructions.
+- Deployment instructions.
+- A list of external service credentials required.
+
+Keep code modular and readable. Use TypeScript types and Python type hints. Avoid massive components, duplicated business logic, unexplained constants, and unnecessary dependencies.
+
+---
+
+## 22. Deployment requirements
+
+Prepare the application for deployment using suitable frontend hosting, backend hosting, managed PostgreSQL, and private file storage.
+
+Document:
+
+- Environment configuration.
+- Database migration steps.
+- Seed-data setup.
+- Build commands.
+- Test commands.
+- Deployment steps.
+- HTTPS and secure cookie requirements.
+- CORS configuration.
+- Secret management.
+- Logging and monitoring.
+- Backup and recovery.
+- AI usage and cost controls.
+- Data deletion procedures.
+
+Never commit production credentials or private user data.
+
+Do not claim the app is deployed unless deployment has actually succeeded.
+
+---
+
+## 23. Definition of done
+
+The application is not complete merely because it looks attractive.
+
+The core MVP is complete only when:
+
+1. A parent can register and securely create a child profile.
+2. The parent can configure the child's grade, language, and curriculum.
+3. The child can complete an assessment.
+4. The system records a meaningful, provisional skill profile.
+5. The child can open and complete an interactive lesson.
+6. Supported answers are graded correctly by tested application logic.
+7. Incorrect answers receive constructive feedback.
+8. The tutor can provide a suitable explanation or hint through the configured AI service, with a safe fallback when unavailable.
+9. The learning planner can select the next activity based on saved learning evidence.
+10. Answers, sessions, and progress persist in the database.
+11. The parent dashboard shows real saved data.
+12. A later session can offer appropriate revision.
+13. The app works on mobile and desktop.
+14. Protected records cannot be accessed by unauthorized users.
+15. Core automated tests pass.
+16. The project builds successfully.
+17. Setup and deployment documentation is complete.
+18. Incomplete integrations and future features are clearly identified.
+
+Demonstrate these workflows with seeded sample data and a test account, without using fabricated production data.
+
+---
+
+## 24. Execution order
+
+Implement the project in this order:
+
+**Phase 1 — Foundation**
+- Inspect the repository.
+- Establish architecture and design system.
+- Create the frontend and backend.
+- Configure the database, migrations, and environment.
+- Implement authentication and parent-child authorization.
+
+**Phase 2 — Educational content**
+- Create the initial mathematics curriculum.
+- Implement skills, prerequisites, lessons, questions, and answer keys.
+- Add diagnostic assessment and deterministic grading.
+
+**Phase 3 — Learning engine**
+- Implement skill states and evidence tracking.
+- Build the adaptive planner.
+- Add misconception tracking and revision scheduling.
+- Write unit tests for the learning rules.
+
+**Phase 4 — Child experience**
+- Build onboarding, child dashboard, lesson player, questions, hints, feedback, and activity completion.
+- Add age-appropriate interactions and audio support.
+
+**Phase 5 — AI integration**
+- Implement the AI provider adapter.
+- Add explanations, hints, and controlled practice generation.
+- Validate structured outputs and handle provider failures.
+- Test with mock responses and the real provider when credentials are available.
+
+**Phase 6 — Parent experience**
+- Build progress reports, session history, skill status, recommendations, and home-learning activities.
+- Ensure every displayed metric comes from real data.
+
+**Phase 7 — Enhanced features**
+- Add secure document uploads and processing.
+- Implement syllabus mapping and source references.
+- Add curated educational videos and expanded language support.
+
+**Phase 8 — Quality and launch preparation**
+- Run unit, integration, authorization, and end-to-end tests.
+- Fix bugs and accessibility issues.
+- Review child privacy and security.
+- Verify responsive layouts.
+- Prepare deployment and operating documentation.
+
+After each phase, ensure the application still builds and the implemented workflow works.
+
+---
+
+## 25. Final instructions to the coding agent
+
+Begin by inspecting the repository, then implement the application rather than only explaining how it could be built.
+
+Prioritize a complete, reliable learning loop over the number of features.
+
+Use genuine database persistence, tested grading logic, modular AI integration, transparent learning decisions, secure authorization, and a polished user interface.
+
+Do not silently omit requirements. If a feature cannot be completed, document exactly what is missing, why it is missing, and what is needed to finish it.
+
+At the end, provide:
+
+1. A summary of what was actually implemented.
+2. The repository structure.
+3. Setup and run instructions.
+4. Required environment variables.
+5. Database migration and seed instructions.
+6. Test results and any failing tests.
+7. Completed versus incomplete features.
+8. Deployment instructions.
+9. Known limitations and the recommended next development step.
+
+**Build Guruji as a dependable personalized learning platform, not merely an AI chatbot or a collection of dashboard screens.**

@@ -1,0 +1,6 @@
+{
+  "name": "Guruji AI",
+  "description": "Guruji AI is a personalized educational platform for children aged 4–12 with a structured AI tutor, deterministic grading, adaptive learning loops, and trusted parent insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
